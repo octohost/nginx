@@ -4,6 +4,7 @@ MAINTAINER Darron Froese "darron@froese.org"
 
 RUN apt-get update
 RUN apt-get -y install python-software-properties
+RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get -y install nginx
 
 RUN mkdir /srv/www
