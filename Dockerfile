@@ -2,8 +2,7 @@ FROM octohost/ubuntu:13.10
 
 MAINTAINER Darron Froese "darron@froese.org"
 
-RUN apt-get update
-RUN apt-get -y install software-properties-common --force-yes
+RUN apt-get update && apt-get -y install software-properties-common --force-yes
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get -y install nginx
 
