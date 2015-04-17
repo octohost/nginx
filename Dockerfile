@@ -1,10 +1,11 @@
-FROM octohost/ubuntu:13.10
+FROM octohost/base:trusty
 
 MAINTAINER Darron Froese "darron@froese.org"
 
-RUN apt-get update && apt-get -y install software-properties-common --force-yes
-RUN add-apt-repository -y ppa:nginx/stable
-RUN apt-get -y install nginx
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys C300EE8C; \
+  echo 'deb http://ppa.launchpad.net/nginx/development/ubuntu trusty main' > /etc/apt/sources.list.d/nginx-development-trusty.list; \
+  apt-get update && apt-get install -y nginx && apt-get clean; \
+  rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /srv/www
 RUN echo "HTML is working" > /srv/www/nginx-container.html
